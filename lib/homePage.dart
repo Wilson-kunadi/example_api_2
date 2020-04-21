@@ -10,7 +10,7 @@ class homePage extends StatefulWidget {
 
 class _homePageState extends State<homePage> {
   List usersData;
-  final String url = "https://randomuser.me/api/?results=50";
+  final String url = "https://randomuser.me/api/?results=500";
   bool isLoading;
 
   Future<String> getuserData() async {
@@ -101,14 +101,23 @@ class _homePageState extends State<homePage> {
   Row rowWidgetForBodyListTile(IconData leadingIcon, Text textWidget) {
     return Row(
       children: <Widget>[
-        Icon(
-          leadingIcon,
-          size: 18,
+        Flexible(
+          flex: 1,
+          child: Icon(
+            leadingIcon,
+            size: 18,
+          ),
         ),
-        SizedBox(
-          width: 8,
+        Flexible(
+          flex: 1,
+          child: SizedBox(
+            width: 8,
+          ),
         ),
-        textWidget,
+        Flexible(
+          child: textWidget,
+          flex: 4,
+        ),
       ],
     );
   }
@@ -119,6 +128,7 @@ class _homePageState extends State<homePage> {
       text_api,
       style: TextStyle(fontSize: fontsize, fontWeight: bold),
       maxLines: maxlines,
+      softWrap: true,
     );
   }
 }
